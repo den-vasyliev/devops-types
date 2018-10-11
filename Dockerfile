@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM bitnami/nginx:latest
 
 COPY ./html ./usr/share/nginx/html
 
