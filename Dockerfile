@@ -6,6 +6,7 @@ RUN git clone https://github.com/den-vasyliev/asmttpd.git&&cd asmttpd && make
 
 FROM nginx
 WORKDIR /html
-ADD ./html .
-COPY --from=builder /src/asmttpd/asmttpd /
-ENTRYPOINT ["/asmttpd", "/html"]
+ADD ./html ./usr/share/nginx/html
+# COPY --from=builder /src/asmttpd/asmttpd /
+# ENTRYPOINT ["/asmttpd", "/html"]
+EXPOSE 80
