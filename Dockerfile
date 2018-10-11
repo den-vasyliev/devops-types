@@ -4,7 +4,7 @@ WORKDIR /src
 RUN apt-get update&&apt-get install git yasm build-essential -y
 RUN git clone https://github.com/den-vasyliev/asmttpd.git&&cd asmttpd && make
 
-FROM scratch
+FROM nginx
 WORKDIR /html
 ADD ./html .
 COPY --from=builder /src/asmttpd/asmttpd /
