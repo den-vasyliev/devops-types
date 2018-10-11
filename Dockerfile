@@ -6,7 +6,7 @@ RUN git clone https://github.com/den-vasyliev/asmttpd.git&&cd asmttpd && make
 
 FROM bitnami/nginx:latest
 #WORKDIR /html
-ADD ./html ./usr/share/nginx/html
+ADD ./html  /opt/bitnami/nginx/html/
 # COPY --from=builder /src/asmttpd/asmttpd /
 # ENTRYPOINT ["/asmttpd", "/html"]
 EXPOSE 80
