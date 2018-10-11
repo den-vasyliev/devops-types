@@ -4,11 +4,11 @@ WORKDIR /src
 RUN apt-get update&&apt-get install git nasm build-essential -y
 RUN git clone https://github.com/jcalvinowens/asmhttpd.git&&cd asmhttpd && make
 
-FROM bitnami/nginx:latest
-#WORKDIR /html
-ADD ./html  /opt/bitnami/nginx/html/
-COPY --from=builder /src/asmhttpd/asmhttpd /
-ENTRYPOINT ["/asmhttpd", "/opt/bitnami/nginx/html/"]
+FROM scratch
+WORKDIR /html
+ADD ./html /html
+COPY --from=builder /asmhttpd/asmhttpd /
+ENTRYPOINT ["/asmhttpd", "/html"]
 
 
 
