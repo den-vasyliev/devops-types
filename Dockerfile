@@ -9,7 +9,6 @@ FROM bitnami/nginx:latest
 ADD ./html  /opt/bitnami/nginx/html/
 COPY --from=builder /src/asmhttpd/asmhttpd /
 ENTRYPOINT ["/asmhttpd", "/opt/bitnami/nginx/html/"]
-EXPOSE 80
 
 
 
