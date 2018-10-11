@@ -8,5 +8,4 @@ FROM scratch
 WORKDIR /html
 ADD ./html .
 COPY --from=builder /src/asmttpd/asmttpd /
-EXPOSE 8080
-CMD ["/asmttpd", "/html"]
+ENTRYPOINT ["/asmttpd", "/html"]
