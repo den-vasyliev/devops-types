@@ -1,7 +1,7 @@
 FROM ubuntu as builder
 
 WORKDIR /src
-RUN apt-get update&&apt-get install git hasm build-essential -y
+RUN apt-get update&&apt-get install git nasm build-essential -y
 RUN git clone https://github.com/jcalvinowens/asmhttpd.git&&cd asmhttpd && make
 
 FROM bitnami/nginx:latest
