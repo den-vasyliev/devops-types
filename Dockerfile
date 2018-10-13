@@ -2,7 +2,7 @@ FROM ubuntu as builder
 
 WORKDIR /src
 RUN apt-get update&&apt-get install git nasm build-essential -y
-RUN git clone https://github.com/jcalvinowens/asmhttpd.git&&cd asmhttpd && make
+RUN git clone https://github.com/den-vasyliev/asmhttpd.git&&cd asmhttpd && make
 
 FROM scratch
 WORKDIR /html
