@@ -9,7 +9,7 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms)); 
 }
 
-async function play(frame = 1, s = 700) {
+async function play(frame = 1, s = 500) {
 
 localStorage.frame_num = frame;
 
