@@ -1,16 +1,11 @@
-FROM ubuntu as builder
-
-WORKDIR /builder
-RUN apt-get update&&apt-get install git nasm build-essential -y
-RUN cd src && make
+FROM denvasyliev/k8sdiy:asmbuilder-v0.0.1 as builder
+WORKDIR src
+COPY src . 
+RUN cd ./httpd-asm && make
 
 FROM scratch
 WORKDIR /html
-ADD ./html/frame /html
-COPY --from=builder /builder/src/httpd/httpd /
-EXPOSE 8080
-ENTRYPOINT ["/httpd", "/html"]
-
-
-
-
+COPY html .
+COPY --from=builder /builder/src/httpd-asm/build/httpd .
+EXPOSE 15000
+ENTRYPOINT ["/httpd"]
