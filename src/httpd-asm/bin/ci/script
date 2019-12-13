@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Debug build.
+make -B && make test || exit 1
+
+# Release build.
+LOGGING=0 RELEASE=1 make -B && make test || exit 1
