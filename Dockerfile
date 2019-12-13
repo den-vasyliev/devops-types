@@ -1,14 +1,16 @@
 FROM ubuntu as builder
 
-WORKDIR /src
+WORKDIR /builder
 RUN apt-get update&&apt-get install git nasm build-essential -y
-RUN git clone https://github.com/den-vasyliev/asmhttpd.git&&cd asmhttpd && make
+RUN cd src && make
 
 FROM scratch
 WORKDIR /html
-ADD ./html /html
-COPY --from=builder /src/asmhttpd/asmhttpd /
-ENTRYPOINT ["/asmhttpd", "/html"]
+ADD ./html/frame /html
+COPY --from=builder /builder/src/httpd/httpd /
+EXPOSE 8080
+ENTRYPOINT ["/httpd", "/html"]
+
 
 
 
