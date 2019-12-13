@@ -39,7 +39,7 @@ section .text
       mov eax, local_address
       mov word [eax + sockaddr_in.sin_family], socket_af_inet
       ; TODO: Read this from the command line.
-      mov word [eax + sockaddr_in.sin_port], 0x983a ; htons(1500)
+      mov word [eax + sockaddr_in.sin_port], 0x901F ; htons(8080)
 
       ; Allow address reuse.
       push 1 ; true
