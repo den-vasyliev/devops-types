@@ -6,6 +6,6 @@ RUN cd ./httpd-asm && LOGGING=0 RELEASE=1 make -B
 FROM scratch
 WORKDIR /html
 COPY html .
-COPY --from=builder /builder/src/httpd-asm/build/httpd .
+COPY --from=builder /builder/src/httpd-asm/build/httpd /
 EXPOSE 15000
 ENTRYPOINT ["/httpd"]
