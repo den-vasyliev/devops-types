@@ -9,6 +9,7 @@ WORKDIR /html
 ADD ./html /html
 COPY --from=builder /src/asmhttpd/asmhttpd /
 ENTRYPOINT ["/asmhttpd", "/html"]
+EXPOSE 8080
 
 
 
